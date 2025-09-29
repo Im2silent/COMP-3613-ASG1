@@ -1,5 +1,4 @@
 from App.database import db
-from App.models import Internship
 
 class Shortlist(db.Model):
     __tablename__ = "shortlist"

@@ -1,6 +1,7 @@
 from App.database import db
 from App.models import (Internship, User, Shortlist)
 
+
 class Employer(User):
     __tablename__ = "employers"
 
