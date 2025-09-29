@@ -3,6 +3,7 @@ from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
 from App.models import (User, Student, Staff, Employer, Internship, Shortlist)
+from App.models import get_student_shortlisted_positions
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize )
 
@@ -47,6 +48,27 @@ def list_user_command(format):
         print(get_all_users_json())
 
 app.cli.add_command(user_cli) # add the group to the cli
+
+'''
+Student Commands
+'''
+stud_cli = AppGroup('student', help='Student object commands')
+
+@stud_cli.command("create", help="Creates a student")
+@click.argument("username", default="rob")
+@click.argument("password", default="robpass")
+def create_student_command(username,password):
+    student = Student.create_student(username, password)
+    if student:
+        print("Student Created!")
+    else:
+        print("Failed to create student.")
+
+@stud_cli.command("shortlist", help="displays a students shortlisted positions")
+@click.argument("student_id", default=-1)
+def student_shortlist_command(student_id):
+    student = get_student_shortlisted_positions(student_id)
+    if
 
 '''
 Test Commands

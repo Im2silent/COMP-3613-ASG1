@@ -22,7 +22,7 @@ class Student(User):
         })
         return data
     
-    def create_student(username, password, ):
+    def create_student(username, password):
         newuser = Student(username=username, password=password)
         try:
             db.session.add(newuser)
