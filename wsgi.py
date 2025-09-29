@@ -63,13 +63,13 @@ def create_student_command(username,password):
         print("Student Created!")
     else:
         print("Failed to create student.")
-
+'''
 @stud_cli.command("shortlist", help="displays a students shortlisted positions")
 @click.argument("student_id", default=-1)
 def student_shortlist_command(student_id):
     student = get_student_shortlisted_positions(student_id)
     if
-
+'''
 '''
 Test Commands
 '''
