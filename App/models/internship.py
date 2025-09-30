@@ -5,6 +5,7 @@ class Internship(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(100))
     shortlists = db.relationship("Shortlist", backref="internship", lazy=True)
     employer_id = db.Column(db.Integer, db.ForeignKey('employers.emp_id'), nullable=False)
 
