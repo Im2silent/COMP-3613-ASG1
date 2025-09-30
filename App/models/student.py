@@ -32,19 +32,20 @@ class Student(User):
             print(e)
             return None
         
-    def get_all_student():
-        return Student.query.all()
+def get_all_student():
+    return Student.query.all()
     
-    def get_student_shortlisted_positions(student_id):
-        shortlists = Shortlist.query.filter_by(student_id=student_id).all()
-        results = []
-        for shortlist in shortlists:
-            internship = Internship.get_internship(shortlist.internship_id)
-            if internship:
-                results.append({
-                    "Student ID" :student_id,
-                    "Internship ID": internship.id,
-                    "Title": internship.title,
-                    "Status": internship.status  
-                })
-        return results
+def get_student_shortlisted_positions(student_id):
+    shortlists = Shortlist.query.filter_by(student_id=student_id).all()
+    results = []
+    for shortlist in shortlists:
+        internship = Internship.get_internship(shortlist.internship_id)
+        if internship:
+            results.append({
+                "internship_id": internship.id,
+                "title": internship.title,
+                "status": internship.status  
+            })
+    return {"Student ID": student_id, 
+            "Shortlisted Internships":results
+    }

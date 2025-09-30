@@ -31,15 +31,15 @@ class Staff(User):
         except:
             return None
 
-    def add_student_to_shortlist(student_id, internship_id):
-        shortlist = Shortlist(student_id=student_id, internship_id=internship_id)
-        try:
-            db.session.add(shortlist)
-            db.session.commit()
-            return shortlist
-        except Exception as e:
-            print(e)
-            return None
-        
-    def get_all_staff():
-        return Staff.query.all()
+def add_student_to_shortlist(student_id, internship_id):
+    shortlist = Shortlist(student_id=student_id, internship_id=internship_id)
+    try:
+        db.session.add(shortlist)
+        db.session.commit()
+        return shortlist
+    except Exception as e:
+        print(e)
+        return None
+    
+def get_all_staff():
+    return Staff.query.all()

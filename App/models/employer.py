@@ -48,32 +48,32 @@ class Employer(User):
             print(e)
             return None
         
-    def accept_shortlisted_student(shortlist_id):
-        shortlist = Shortlist.query.get(shortlist_id)
-        if not shortlist:
-            return False
-        internship = Internship.get_internship(shortlist.internship_id)
-        if not internship:
-            return False
-        internship.accept()
-        try:
-            db.session.commit()
-            return True
-        except Exception as e:
-            print(e)
-            return False
+def accept_shortlisted_student(shortlist_id):
+    shortlist = Shortlist.query.get(shortlist_id)
+    if not shortlist:
+        return False
+    internship = Internship.get_internship(shortlist.internship_id)
+    if not internship:
+        return False
+    internship.accept()
+    try:
+        db.session.commit()
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
-    def reject_shortlisted_student(shortlist_id):
-        shortlist = Shortlist.query.get(shortlist_id)
-        if not shortlist:
-            return False
-        internship = Internship.get_internship(shortlist.internship_id)
-        if not internship:
-            return False
-        internship.reject()
-        try:
-            db.session.commit()
-            return True
-        except Exception as e:
-            print(e)
-            return False
+def reject_shortlisted_student(shortlist_id):
+    shortlist = Shortlist.query.get(shortlist_id)
+    if not shortlist:
+        return False
+    internship = Internship.get_internship(shortlist.internship_id)
+    if not internship:
+        return False
+    internship.reject()
+    try:
+        db.session.commit()
+        return True
+    except Exception as e:
+        print(e)
+        return False

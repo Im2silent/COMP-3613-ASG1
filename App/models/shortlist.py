@@ -18,7 +18,7 @@ class Shortlist(db.Model):
             "Internship ID ": self.internship_id
         }
     
-    def get_all_shortlist():
-        return Shortlist.query.all()
+def get_all_shortlist():
+    return Shortlist.query.all()
 
     

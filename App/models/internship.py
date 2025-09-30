@@ -29,5 +29,5 @@ class Internship(db.Model):
     def get_internship(id):
         return Internship.query.get(id)
 
-    def get_all_internship():
-        return Internship.query.all()
+def get_all_internship():
+    return Internship.query.all()
