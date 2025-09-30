@@ -4,8 +4,7 @@ from App.models import (User, Shortlist)
 class Staff(User):
     __tablename__ = "staff"
 
-    id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
-    staff_id = db.Column(db.Integer, unique=True)
+    staff_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
 
     __mapper_args__ = {
         "polymorphic_identity": "staff",
