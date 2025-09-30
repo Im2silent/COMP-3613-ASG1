@@ -22,8 +22,8 @@ class Staff(User):
         })
         return data
     
-    def create_staff(username, password):
-        newuser = Staff(username=username, password=password)
+    def create_staff(username, password, staff_id):
+        newuser = Staff(username=username, password=password, staff_id=staff_id)
         try:
             db.session.add(newuser)
             db.session.commit()
