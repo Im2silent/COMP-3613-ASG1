@@ -52,7 +52,7 @@ def accept_shortlisted_student(shortlist_id):
     shortlist = Shortlist.query.get(shortlist_id)
     if not shortlist:
         return False
-    internship = Internship.get_internship(shortlist.internship_id)
+    internship = Internship.get_internship(Shortlist.internship_id)
     if not internship:
         return False
     internship.accept()

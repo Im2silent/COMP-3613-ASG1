@@ -14,8 +14,8 @@ class Shortlist(db.Model):
     def get_json(self):
         return {
             "Shortlist"
-            "Student ID ": self.student_id,
-            "Internship ID ": self.internship_id
+            "student_id ": self.student_id,
+            "internship_id ": self.internship_id
         }
     
 def get_all_shortlist():
