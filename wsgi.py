@@ -74,6 +74,8 @@ def student_shortlist_command(student_id):
     else:
         print(f"No shortlisted internships found for student {student_id}")
 
+app.cli.add_command(stud_cli)
+
 '''
 Staff Commands
 '''
@@ -98,6 +100,8 @@ def add_student_shortlist_command(student_id,internship_id):
         print("Student added to shortlist!")
     else:
         print("Failed to add student to shortlist.")
+
+app.cli.add_command(staff_cli)
 
 '''
 Employer Commands
@@ -141,6 +145,8 @@ def reject_shortlist_command(shortlist_id):
         print("Shortlisted rejected!")
     else:
         print("Error. Could not reject shortlisted student!")
+
+app.cli.add_command(emp_cli)
 
 '''
 Test Commands
