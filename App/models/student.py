@@ -22,8 +22,8 @@ class Student(User):
         })
         return data
     
-    def create_student(username, password):
-        newuser = Student(username=username, password=password)
+    def create_student(username, password, student_id):
+        newuser = Student(username=username, password=password, student_id=student_id)
         try:
             db.session.add(newuser)
             db.session.commit()

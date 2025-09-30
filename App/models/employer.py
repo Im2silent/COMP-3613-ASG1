@@ -39,8 +39,8 @@ class Employer(User):
             return None
         
     
-    def create_employer(username, password, company):
-        newuser = Employer(username=username, password=password, company=company)
+    def create_employer(username, password, emp_id, company):
+        newuser = Employer(username=username, password=password, emp_id=emp_id, company=company)
         try:
             db.session.add(newuser)
             db.session.commit()

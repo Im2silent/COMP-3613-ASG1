@@ -55,10 +55,11 @@ Student Commands
 stud_cli = AppGroup('student', help='Student object commands')
 
 @stud_cli.command("create", help="Creates a student")
-@click.argument("username", default="rob")
-@click.argument("password", default="robpass")
-def create_student_command(username,password):
-    student = Student.create_student(username, password)
+@click.argument("username", default="cal")
+@click.argument("password", default="calpass")
+@click.argument("student_id", default="100")
+def create_student_command(username,password,student_id):
+    student = Student.create_student(username, password, student_id)
     if student:
         print("Student Created!")
     else:
@@ -110,20 +111,28 @@ Employer Commands
 emp_cli = AppGroup('employer', help='Employer object commands')
 
 @emp_cli.command("create", help="Creates a employer")
-@click.argument("username", default="bob")
-@click.argument("password", default="bobpass")
-def create_employer_command(username,password):
-    employer = Employer.create_employer(username, password)
+@click.argument("username", default="al")
+@click.argument("password", default="alpass")
+@click.argument("emp_id", default="200")
+@click.argument("company", default="TDVTech")
+def create_employer_command(username,password,emp_id, company):
+    employer = Employer.create_employer(username, password,emp_id, company)
     if employer:
         print("Employer Created!")
     else:
         print("Failed to create Employer.")
 
 @emp_cli.command("internship", help="Creates an internship")
+@click.argument("emp_id", default="200")
 @click.argument("title", default="Programmer")
-@click.argument("description", default="kylea fulltime unpaid programmer")
-def create_internship_command(title,description):
-    internship = Employer.create_internship(title, description)
+@click.argument("description", default="a fulltime unpaid programmer")
+def create_internship_command(emp_id, title,description):
+    employer = Employer.query.get(emp_id)
+    if not employer:
+        print(f"Employer with id {emp_id} not found.")
+        return
+    
+    internship = employer.create_internship(title, description)
     if internship:
         print("Internship Created!")
     else:
