@@ -1,11 +1,12 @@
 from App.database import db
-from App.models import (Internship, User, Shortlist)
-
+from App.models import User
+from .internship import Internship  
+from .shortlist import Shortlist 
 
 class Employer(User):
     __tablename__ = "employers"
 
-    emp_id = db.Column(db.Integer, primary_key=True)
+    emp_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
     company = db.Column(db.String(100))
     internships = db.relationship("Internship", backref="employer", lazy=True)
 
@@ -21,7 +22,7 @@ class Employer(User):
     def get_json(self):
         data = super().get_json()
         data.update({
-            "employer_id": self.emp_id,
+            "emp_id": self.emp_id,
             "company": self.company
         })
         return data
@@ -52,7 +53,7 @@ def accept_shortlisted_student(shortlist_id):
     shortlist = Shortlist.query.get(shortlist_id)
     if not shortlist:
         return False
-    internship = Internship.get_internship(Shortlist.internship_id)
+    internship = Internship.get_internship(shortlist.internship_id)
     if not internship:
         return False
     internship.accept()

@@ -4,7 +4,7 @@ from App.models import (User, Shortlist, Internship)
 class Student(User):
     __tablename__ = "students"
 
-    student_id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer,db.ForeignKey("users.id"), primary_key=True)
     shortlists = db.relationship("Shortlist", backref="student", lazy=True)
 
     __mapper_args__ = {
