@@ -81,7 +81,7 @@ Staff Commands
 '''
 staff_cli = AppGroup('staff', help='Staff object commands')
 
-@stud_cli.command("create", help="Creates a staff")
+@staff_cli.command("create", help="Creates a staff")
 @click.argument("username", default="kyle")
 @click.argument("password", default="kylepass")
 @click.argument("staff_id", default="001")
@@ -92,7 +92,7 @@ def create_staff_command(username,password,staff_id):
     else:
         print("Failed to create staff.")
 
-@stud_cli.command("add", help="Adds student to shortlist")
+@staff_cli.command("add", help="Adds student to shortlist")
 @click.argument("student_id", default="-1")
 @click.argument("internship_id", default="-1")
 def add_student_shortlist_command(student_id,internship_id):
