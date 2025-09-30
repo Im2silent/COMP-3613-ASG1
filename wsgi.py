@@ -84,8 +84,9 @@ staff_cli = AppGroup('staff', help='Staff object commands')
 @stud_cli.command("create", help="Creates a staff")
 @click.argument("username", default="kyle")
 @click.argument("password", default="kylepass")
-def create_staff_command(username,password):
-    staff = Staff.create_staff(username, password)
+@click.argument("staff_id", default="001")
+def create_staff_command(username,password,staff_id):
+    staff = Staff.create_staff(username, password, staff_id)
     if staff:
         print("Staff Created!")
     else:
